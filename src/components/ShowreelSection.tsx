@@ -37,6 +37,7 @@ const ShowreelSection = () => {
                 <video
                   src={video.src}
                   controls
+                  muted
                   preload="metadata"
                   className="w-full aspect-video object-cover"
                   playsInline
