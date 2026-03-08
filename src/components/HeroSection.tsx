@@ -34,7 +34,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-6"
           >
-            <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-primary/50 shadow-lg shadow-primary/20 ring-4 ring-primary/10">
+            <div className="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/50 shadow-lg shadow-primary/20 ring-4 ring-primary/10">
               <img
                 src={profilePhoto}
                 alt="Mahmoud Fathy Orabi"
