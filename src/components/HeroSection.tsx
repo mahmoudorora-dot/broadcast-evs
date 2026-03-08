@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const HeroSection = () => {
   return (
@@ -24,7 +25,24 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-center"
         >
+          {/* Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-6"
+          >
+            <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-primary/50 shadow-lg shadow-primary/20 ring-4 ring-primary/10">
+              <img
+                src={profilePhoto}
+                alt="Mahmoud Fathy Orabi"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          </motion.div>
+
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
             <MapPin size={14} className="text-primary" />
             <span className="text-xs font-medium tracking-wide text-primary">Dubai Production City, UAE</span>
