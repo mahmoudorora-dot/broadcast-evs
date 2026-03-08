@@ -4,6 +4,7 @@ import { Play } from "lucide-react";
 const videos = [
   { src: "/videos/showreel-1.mp4", title: "Live Production Highlights" },
   { src: "/videos/showreel-2.mp4", title: "MAP Production – Behind the Scenes" },
+  { src: "/videos/showreel-3.mp4", title: "Production Setup & Field Work" },
 ];
 
 const ShowreelSection = () => {
