@@ -20,21 +20,21 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-center"
+          className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
         >
-          {/* Profile Photo */}
+          {/* Profile Photo - Left Side */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-6"
+            className="flex-shrink-0"
           >
-            <div className="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/50 shadow-lg shadow-primary/20 ring-4 ring-primary/10">
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-lg overflow-hidden border-2 border-primary/40 shadow-lg shadow-primary/20">
               <img
                 src={profilePhoto}
                 alt="Mahmoud Fathy Orabi"
@@ -43,45 +43,48 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
-            <MapPin size={14} className="text-primary" />
-            <span className="text-xs font-medium tracking-wide text-primary">Dubai Production City, UAE</span>
-          </div>
+          {/* Text Content - Right Side */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-4">
+              <MapPin size={14} className="text-primary" />
+              <span className="text-xs font-medium tracking-wide text-primary">Dubai Production City, UAE</span>
+            </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight mb-4">
-            <span className="text-foreground">Mahmoud Fathy</span>
-            <br />
-            <span className="text-gradient">Orabi</span>
-          </h1>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-3">
+              <span className="text-foreground">Mahmoud Fathy</span>
+              <br />
+              <span className="text-gradient">Orabi</span>
+            </h1>
 
-          <p className="text-lg md:text-xl font-display font-medium tracking-wide text-silver uppercase mb-6">
-            EVS Operator &nbsp;|&nbsp; OB Technician &nbsp;|&nbsp; Media Systems Operator
-          </p>
+            <p className="text-base md:text-lg font-display font-medium tracking-wide text-silver uppercase mb-4">
+              EVS Operator &nbsp;|&nbsp; OB Technician &nbsp;|&nbsp; Media Systems Operator
+            </p>
 
-          <p className="max-w-2xl mx-auto text-muted-foreground leading-relaxed mb-10 text-sm md:text-base">
-            Broadcast technician with more than 8 years of experience in live sports production,
-            EVS replay systems, media playback, and outside broadcast operations.
-          </p>
+            <p className="max-w-xl text-muted-foreground leading-relaxed mb-8 text-sm md:text-base">
+              Broadcast technician with more than 8 years of experience in live sports production,
+              EVS replay systems, media playback, and outside broadcast operations.
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#experience"
-              className="px-8 py-3 rounded-md bg-primary text-primary-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:shadow-lg hover:shadow-primary/25 hover:scale-105"
-            >
-              View Experience
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-3 rounded-md border border-silver/30 text-silver font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:border-primary/50 hover:text-foreground"
-            >
-              Contact Me
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-3 rounded-md border border-border text-muted-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:text-foreground"
-            >
-              Download CV
-            </a>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+              <a
+                href="#experience"
+                className="px-8 py-3 rounded-md bg-primary text-primary-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:shadow-lg hover:shadow-primary/25 hover:scale-105"
+              >
+                View Experience
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3 rounded-md border border-silver/30 text-silver font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:border-primary/50 hover:text-foreground"
+              >
+                Contact Me
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3 rounded-md border border-border text-muted-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:text-foreground"
+              >
+                Download CV
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
