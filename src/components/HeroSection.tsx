@@ -14,8 +14,8 @@ const HeroSection = () => {
 
       {/* Live indicator */}
       <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse-glow" />
-        <span className="text-xs font-display font-semibold tracking-widest uppercase text-red-400">Live</span>
+        <span className="w-2.5 h-2.5 rounded-full bg-live animate-pulse-glow" />
+        <span className="text-xs font-display font-semibold tracking-widest uppercase text-live">Live</span>
       </div>
 
       {/* Content */}

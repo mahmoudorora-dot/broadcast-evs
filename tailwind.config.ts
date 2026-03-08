@@ -55,6 +55,7 @@ export default {
           DEFAULT: "hsl(var(--silver))",
           foreground: "hsl(var(--silver-foreground))",
         },
+        live: "hsl(var(--live))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
