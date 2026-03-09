@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import { Trophy, MapPin, CalendarDays } from "lucide-react";
 
 const events = [
+  { title: "Sona'a Al Hayah – Live Broadcast", location: "Dubai", year: "2024 – 2025" },
+  { title: "TikTok World 2025", location: "UAE", year: "2025" },
+  { title: "Camel Racing Championships", location: "UAE", year: "2024 – 2025" },
+  { title: "World Jiu-Jitsu Championship", location: "Fujairah", year: "2024" },
+  { title: "World Karate Championship", location: "Fujairah", year: "2024" },
   { title: "World Snooker Championship", location: "Riyadh", year: "2024" },
   { title: "World 9-Ball Championship", location: "Jeddah", year: "2024" },
-  { title: "World Karate Championship", location: "Fujairah", year: "2025" },
-  { title: "World Jiu-Jitsu Championship", location: "Fujairah", year: "2025" },
 ];
 
 const EventsSection = () => {
