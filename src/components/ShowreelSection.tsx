@@ -34,6 +34,7 @@ const ShowreelSection = () => {
                 transition={{ duration: 0.4, delay: i * 0.15 }}
                 className="group relative rounded-lg overflow-hidden border border-border bg-background hover:border-primary/50 transition-all hover:glow-border"
               >
+                {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
                 <video
                   src={video.src}
                   controls
@@ -41,6 +42,13 @@ const ShowreelSection = () => {
                   preload="metadata"
                   className="w-full aspect-video object-cover"
                   playsInline
+                  onVolumeChange={(e) => {
+                    const video = e.currentTarget;
+                    if (!video.muted) {
+                      video.muted = true;
+                      video.volume = 0;
+                    }
+                  }}
                 />
                 <div className="p-4 flex items-center gap-3">
                   <Play size={16} className="text-primary shrink-0" />

@@ -81,7 +81,7 @@ const ContactSection = () => {
               Instagram
             </a>
             <a
-              href="https://www.tiktok.com/@mahmoud.orabi23?_r=1&_t=ZS-94X4sdWpmQ0"
+              href="https://www.tiktok.com/@mahmoud.orabi23?_r=1&_t=ZS-94Xodtsa4Bw"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border text-silver font-display font-semibold text-sm uppercase tracking-wide transition-all hover:bg-secondary hover:border-primary/50 hover:text-foreground"
