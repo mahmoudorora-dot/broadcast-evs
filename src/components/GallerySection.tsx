@@ -6,6 +6,13 @@ const workPhotos = [
   { src: "/images/gallery-control-room.jpeg", caption: "Broadcast Control Room" },
   { src: "/images/gallery-evs-operator.jpeg", caption: "EVS Operation – Live Production" },
   { src: "/images/gallery-evs-equipment.jpg", caption: "EVS XT Server – Signal Routing" },
+  { src: "/images/gallery-stadium.jpg", caption: "Live Sports – Stadium Coverage" },
+  { src: "/images/gallery-ob-van.jpg", caption: "OB Van – Production Switcher" },
+  { src: "/images/gallery-server-room.jpg", caption: "OB Van – Server & Monitoring" },
+  { src: "/images/gallery-control-station.jpg", caption: "Behind the Scenes – Workstation" },
+  { src: "/images/gallery-falcon-event.jpg", caption: "Falcon Championship – Live Event" },
+  { src: "/images/gallery-headset-selfie.jpg", caption: "On Location – Field Work" },
+  { src: "/images/gallery-evs-remote.jpg", caption: "EVS LSM Remote Controller" },
 ];
 
 const achievements = [
@@ -45,21 +52,22 @@ const GallerySection = () => {
             Snapshots from live productions and broadcast environments.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Masonry-style grid */}
+          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
             {workPhotos.map((photo, i) => (
               <motion.div
                 key={photo.caption}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group relative rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-all hover:glow-border"
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="group relative rounded-lg overflow-hidden border border-border hover:border-primary/50 transition-all hover:glow-border break-inside-avoid"
               >
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="overflow-hidden">
                   <img
                     src={photo.src}
                     alt={photo.caption}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
                 </div>
