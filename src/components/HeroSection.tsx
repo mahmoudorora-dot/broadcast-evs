@@ -1,14 +1,22 @@
 import { motion } from "framer-motion";
 import { MapPin, ChevronDown } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Video Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Broadcast control room" className="w-full h-full object-cover" />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          poster=""
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
         <div className="absolute inset-0 scanline pointer-events-none" />
       </div>
