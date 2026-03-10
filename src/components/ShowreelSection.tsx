@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 
 const videos = [
-  { src: "/videos/showreel-1.mp4", title: "Live Production Highlights" },
   { src: "/videos/showreel-3.mp4", title: "Production Setup & Field Work" },
   { src: "/videos/showreel-4.mp4", title: "Broadcast Operations" },
   { src: "/videos/showreel-5.mp4", title: "Live Event Coverage" },
