@@ -38,7 +38,7 @@ const HeroSection = () => {
               <img
                 src={profilePhoto}
                 alt="Mahmoud Fathy Orabi"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-contain bg-background/50"
               />
             </div>
           </motion.div>
