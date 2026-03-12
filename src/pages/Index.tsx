@@ -20,6 +20,7 @@ const Index = () => {
       <SkillsTicker />
       <AboutSection />
       <ShowreelSection />
+      <FilmStripSlider />
       <GallerySection />
       <EventsSection />
       <ExperienceSection />
