@@ -86,7 +86,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] }}
             className="flex-shrink-0"
           >
             <div className="relative group">
