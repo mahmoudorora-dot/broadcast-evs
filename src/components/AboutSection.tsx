@@ -1,17 +1,28 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Monitor, Radio, Tv, Users } from "lucide-react";
+import { useRef } from "react";
 
 const highlights = [
-  { icon: Monitor, label: "EVS Replay Systems" },
-  { icon: Radio, label: "Live Broadcast" },
-  { icon: Tv, label: "Media Playback" },
-  { icon: Users, label: "Team Coordination" },
+  { icon: Monitor, label: "EVS Replay Systems", value: "8+" },
+  { icon: Radio, label: "Live Broadcast", value: "200+" },
+  { icon: Tv, label: "Media Playback", value: "50+" },
+  { icon: Users, label: "Team Projects", value: "100+" },
 ];
+
+const CountUp = ({ value }: { value: string }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+  return (
+    <span ref={ref} className="text-2xl font-display font-bold text-primary">
+      {isInView ? value : "0"}
+    </span>
+  );
+};
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 relative">
-      <div className="absolute inset-0 broadcast-grid opacity-30 pointer-events-none" />
+    <section id="about" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 broadcast-grid opacity-20 pointer-events-none" />
       <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,10 +58,14 @@ const AboutSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="p-5 rounded-lg bg-card border border-border glow-border flex flex-col items-center text-center gap-3"
+                  className="group p-5 rounded-lg bg-card border border-border hover:border-primary/40 hover:glow-border transition-all duration-500 flex flex-col items-center text-center gap-2"
                 >
-                  <item.icon size={28} className="text-primary" />
-                  <span className="text-xs font-display font-semibold tracking-wide uppercase text-silver">
+                  <item.icon
+                    size={24}
+                    className="text-primary transition-all group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.4)]"
+                  />
+                  <CountUp value={item.value} />
+                  <span className="text-[10px] font-display font-semibold tracking-wide uppercase text-silver">
                     {item.label}
                   </span>
                 </motion.div>

@@ -1,109 +1,207 @@
-import { motion } from "framer-motion";
-import { MapPin, ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { MapPin, ChevronDown, Play } from "lucide-react";
+import { useRef } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
+const textVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.15, ease: [0.25, 0.4, 0.25, 1] },
+  }),
+};
+
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0">
+    <section
+      ref={sectionRef}
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Parallax Video Background */}
+      <motion.div className="absolute inset-0" style={{ y: videoY }}>
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-[120%] object-cover"
           poster=""
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
-        <div className="absolute inset-0 scanline pointer-events-none" />
-      </div>
+      </motion.div>
+
+      {/* Cinematic overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/40" />
+      <div className="absolute inset-0 scanline pointer-events-none opacity-40" />
+
+      {/* Animated corner frames */}
+      <div className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-primary/30" />
+      <div className="absolute top-8 right-8 w-16 h-16 border-r-2 border-t-2 border-primary/30" />
+      <div className="absolute bottom-20 left-8 w-16 h-16 border-l-2 border-b-2 border-primary/30" />
+      <div className="absolute bottom-20 right-8 w-16 h-16 border-r-2 border-b-2 border-primary/30" />
 
       {/* Live indicator */}
-      <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="absolute top-6 left-6 flex items-center gap-2 z-10"
+      >
         <span className="w-2.5 h-2.5 rounded-full bg-live animate-pulse-glow" />
-        <span className="text-xs font-display font-semibold tracking-widest uppercase text-live">Live</span>
-      </div>
+        <span className="text-xs font-display font-semibold tracking-widest uppercase text-live">
+          Live
+        </span>
+      </motion.div>
+
+      {/* Timecode */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+        className="absolute top-6 right-6 z-10 font-mono text-xs text-primary/50 tracking-widest"
+      >
+        REC ● 00:00:00:00
+      </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col md:flex-row items-center gap-8 md:gap-12"
-        >
-          {/* Profile Photo - Left Side */}
+      <motion.div
+        style={{ opacity: contentOpacity }}
+        className="relative z-10 container mx-auto px-6"
+      >
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-14">
+          {/* Profile Photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
             className="flex-shrink-0"
           >
-            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-primary/40 shadow-lg shadow-primary/20">
-              <img
-                src={profilePhoto}
-                alt="Mahmoud Fathy Orabi"
-                className="w-full h-full object-contain bg-background/50"
-              />
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/60 via-primary/20 to-primary/60 rounded-full blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-primary/50 shadow-2xl shadow-primary/20">
+                <img
+                  src={profilePhoto}
+                  alt="Mahmoud Fathy Orabi"
+                  className="w-full h-full object-contain bg-background/50"
+                />
+              </div>
             </div>
           </motion.div>
 
-          {/* Text Content - Right Side */}
+          {/* Text Content */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-4">
+            <motion.div
+              custom={0}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-5"
+            >
               <MapPin size={14} className="text-primary" />
-              <span className="text-xs font-medium tracking-wide text-primary">Dubai Production City, UAE</span>
-            </div>
+              <span className="text-xs font-medium tracking-wide text-primary">
+                Dubai Production City, UAE
+              </span>
+            </motion.div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-3">
+            <motion.h1
+              custom={1}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-3"
+            >
               <span className="text-foreground">Mahmoud Fathy</span>
               <br />
               <span className="text-gradient">Orabi</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-base md:text-lg font-display font-medium tracking-wide text-silver uppercase mb-4">
-              EVS Operator &nbsp;|&nbsp; OB Technician &nbsp;|&nbsp; Media Systems Operator
-            </p>
+            <motion.p
+              custom={2}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-sm md:text-base font-display font-medium tracking-wider text-silver uppercase mb-2"
+            >
+              Broadcast & EVS Operator
+            </motion.p>
+            <motion.p
+              custom={2.5}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="text-xs md:text-sm font-display tracking-wide text-muted-foreground uppercase mb-6"
+            >
+              Media Production Specialist
+            </motion.p>
 
-            <p className="max-w-xl text-muted-foreground leading-relaxed mb-8 text-sm md:text-base">
+            <motion.p
+              custom={3}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="max-w-xl text-muted-foreground leading-relaxed mb-8 text-sm md:text-base"
+            >
               Broadcast technician with more than 8 years of experience in live sports production,
               EVS replay systems, media playback, and outside broadcast operations.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <motion.div
+              custom={4}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap items-center justify-center md:justify-start gap-4"
+            >
+              <a
+                href="#showreel"
+                className="group inline-flex items-center gap-2.5 px-8 py-3 rounded-md bg-primary text-primary-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:shadow-lg hover:shadow-primary/30 hover:scale-105"
+              >
+                <Play size={16} className="transition-transform group-hover:scale-110" />
+                Watch Showreel
+              </a>
               <a
                 href="#experience"
-                className="px-8 py-3 rounded-md bg-primary text-primary-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:shadow-lg hover:shadow-primary/25 hover:scale-105"
+                className="px-8 py-3 rounded-md border border-silver/30 text-silver font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:border-primary/50 hover:text-foreground"
               >
                 View Experience
               </a>
               <a
                 href="#contact"
-                className="px-8 py-3 rounded-md border border-silver/30 text-silver font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:border-primary/50 hover:text-foreground"
+                className="px-8 py-3 rounded-md border border-border text-muted-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:text-foreground"
               >
                 Contact Me
               </a>
-              <a
-                href="#contact"
-                className="px-8 py-3 rounded-md border border-border text-muted-foreground font-display font-semibold tracking-wide text-sm uppercase transition-all hover:bg-secondary hover:text-foreground"
-              >
-                Download CV
-              </a>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
       >
-        <ChevronDown size={24} className="text-muted-foreground" />
+        <span className="text-[10px] font-display tracking-widest text-muted-foreground uppercase">
+          Scroll
+        </span>
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}>
+          <ChevronDown size={20} className="text-muted-foreground" />
+        </motion.div>
       </motion.div>
     </section>
   );
