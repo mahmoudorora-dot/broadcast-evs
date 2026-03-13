@@ -13,8 +13,9 @@ const events = [
 
 const EventsSection = () => {
   return (
-    <section id="events" className="py-24 bg-card/50">
-      <div className="container mx-auto px-6">
+    <section id="events" className="py-24 bg-card/50 relative overflow-hidden">
+      <div className="absolute inset-0 broadcast-grid opacity-10 pointer-events-none" />
+      <div className="container mx-auto px-6 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,14 +34,21 @@ const EventsSection = () => {
             {events.map((event, i) => (
               <motion.div
                 key={event.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="group relative p-6 rounded-lg bg-background border border-border transition-all hover:border-primary/50 hover:glow-border"
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                whileHover={{ y: -4 }}
+                className="group relative p-6 rounded-lg bg-background border border-border transition-all duration-500 hover:border-primary/50 hover:glow-border overflow-hidden"
               >
-                <Trophy size={32} className="text-primary mb-4 transition-transform group-hover:scale-110" />
-                <h3 className="font-display font-bold text-lg text-foreground mb-3 leading-tight">
+                {/* Background glow */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-primary/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                <Trophy
+                  size={28}
+                  className="text-primary mb-4 transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary)/0.5)]"
+                />
+                <h3 className="font-display font-bold text-base text-foreground mb-3 leading-tight">
                   {event.title}
                 </h3>
                 <div className="flex items-center gap-1.5 text-muted-foreground text-xs mb-1.5">
@@ -51,7 +59,6 @@ const EventsSection = () => {
                   <CalendarDays size={12} />
                   <span>{event.year}</span>
                 </div>
-                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full pointer-events-none" />
               </motion.div>
             ))}
           </div>
