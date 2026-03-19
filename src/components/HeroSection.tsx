@@ -20,12 +20,6 @@ const HeroSection = () => {
   const [videoError, setVideoError] = useState(false);
   const [imageError, setImageError] = useState(false);
   
-  // Log initial state
-  console.log('[HeroSection] Initial paths:', {
-    heroVideoSrc,
-    profilePhoto
-  });
-  
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -56,24 +50,9 @@ const HeroSection = () => {
             playsInline
             preload="auto"
             className="w-full h-[120%] object-cover"
-            onLoadedData={() => {
-              console.log('[Hero Video] ✅ Loaded successfully');
-            }}
-            onLoadedMetadata={(e) => {
-              console.log('[Hero Video] Metadata loaded:', {
-                duration: e.currentTarget.duration,
-                width: e.currentTarget.videoWidth,
-                height: e.currentTarget.videoHeight,
-                src: heroVideoSrc
-              });
-            }}
             onError={(e) => {
               const error = e.currentTarget.error;
-              console.error('[Hero Video] ❌ Error:', {
-                message: error?.message,
-                code: error?.code,
-                src: heroVideoSrc
-              });
+              console.error('[Hero Video] Error:', error?.message);
               setVideoError(true);
             }}
           >
@@ -141,14 +120,8 @@ const HeroSection = () => {
                     src={profilePhoto}
                     alt="Mahmoud Fathy Orabi"
                     className="w-full h-full object-contain bg-background/50"
-                    onLoadedData={() => {
-                      console.log('[Profile Photo] ✅ Loaded successfully');
-                    }}
-                    onError={(e) => {
-                      console.error('[Profile Photo] ❌ Error loading:', {
-                        src: profilePhoto,
-                        event: e
-                      });
+                    onError={() => {
+                      console.error('[Profile Photo] Error loading:', profilePhoto);
                       setImageError(true);
                     }}
                   />

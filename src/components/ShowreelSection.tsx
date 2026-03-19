@@ -67,9 +67,6 @@ const VideoCard = ({
   const [isHovered, setIsHovered] = useState(false);
   const [videoError, setVideoError] = useState(false);
 
-  // Log video source
-  console.log(`[VideoCard] "${video.title}" src:`, video.src);
-
   const handleMouseEnter = () => {
     setIsHovered(true);
     if (!videoError) {
@@ -116,23 +113,9 @@ const VideoCard = ({
             className={`w-full aspect-video object-cover transition-transform duration-700 ${
               isHovered ? "scale-110" : "scale-100"
             }`}
-            onLoadedData={() => {
-              console.log(`[VideoCard "${video.title}"] ✅ Loaded successfully`);
-            }}
-            onLoadedMetadata={(e) => {
-              console.log(`[VideoCard "${video.title}"] Metadata:`, {
-                duration: e.currentTarget.duration,
-                width: e.currentTarget.videoWidth,
-                height: e.currentTarget.videoHeight
-              });
-            }}
             onError={(e) => {
               const error = e.currentTarget.error;
-              console.error(`[VideoCard "${video.title}"] ❌ Error:`, {
-                message: error?.message,
-                code: error?.code,
-                src: video.src
-              });
+              console.error(`[Video "${video.title}"] Error:`, error?.message);
               setVideoError(true);
             }}
             onVolumeChange={(e) => {
