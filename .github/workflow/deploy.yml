@@ -47,6 +47,12 @@ jobs:
       - name: Create .nojekyll file
         run: touch dist/.nojekyll
 
+      - name: List dist folder contents
+        run: |
+          echo "=== Contents of dist folder ==="
+          ls -la dist/
+          ls -la dist/assets/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
