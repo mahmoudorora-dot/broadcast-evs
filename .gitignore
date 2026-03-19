@@ -12,3 +12,6 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 $null
+
+# Vite source file (not needed in repo for Actions deployment)
+# index.html
