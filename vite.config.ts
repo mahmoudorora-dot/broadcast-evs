@@ -6,8 +6,8 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // استخدم base path فقط في وضع الإنتاج وليس التطوير
-  base: "/", 
-  
+  base: "/",
+
   server: {
     host: "::",
     port: 8080,
@@ -15,6 +15,13 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+
+  preview: {
+    host: "::",
+    port: 4173,
+    open: false,
+  },
+
   plugins: [
     react(),
     mode === "development" && componentTagger(),
