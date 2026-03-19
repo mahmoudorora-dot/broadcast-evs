@@ -30,8 +30,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Clean dist folder
+        run: rm -rf dist || true
+
+      - name: Build with cache disabled
         run: npm run build
+        env:
+          CI: true
 
       - name: Copy CNAME file
         run: cp CNAME dist/CNAME 2>/dev/null || true
