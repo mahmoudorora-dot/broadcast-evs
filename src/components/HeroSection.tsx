@@ -4,7 +4,8 @@ import { useRef, useState } from "react";
 import { withBase, getAssetUrl } from "@/lib/media";
 
 const heroVideoSrc = withBase("videos/showreel-6.mp4");
-const profilePhoto = withBase("/profile-photo.jpeg");
+const profilePhoto = "/profile-photo.jpeg";
+const heroBackgroundImage = "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
 
 const textVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -19,6 +20,7 @@ const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [videoError, setVideoError] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [profileError, setProfileError] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -32,33 +34,22 @@ const HeroSection = () => {
       ref={sectionRef}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ position: 'relative' }}
     >
-      {/* Parallax Video Background - z-0 to be behind overlays */}
+      {/* Professional Background Image - z-0 to be behind overlays */}
       <motion.div className="absolute inset-0 z-0" style={{ y: videoY }}>
-        {videoError ? (
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-muted to-background flex items-center justify-center">
-            <div className="text-center">
-              <AlertTriangle size={48} className="text-muted-foreground mx-auto mb-3 opacity-50" />
-              <p className="text-xs text-muted-foreground">Video unavailable</p>
-            </div>
-          </div>
-        ) : (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-[120%] object-cover"
-            onError={(e) => {
-              const error = e.currentTarget.error;
-              console.error('[Hero Video] Error:', error?.message);
-              setVideoError(true);
-            }}
-          >
-            <source src={heroVideoSrc} type="video/mp4" />
-          </video>
-        )}
+        <div 
+          className="w-full h-[120%] relative"
+          style={{
+            backgroundImage: `url("${heroBackgroundImage}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            filter: 'brightness(0.6) contrast(1.2) saturate(1.1)',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30" />
+        </div>
       </motion.div>
 
       {/* Cinematic overlays - reduced opacity so video is visible */}
@@ -111,21 +102,23 @@ const HeroSection = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary/60 via-primary/20 to-primary/60 rounded-full blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-primary/50 shadow-2xl shadow-primary/20">
-                {imageError ? (
-                  <div className="w-full h-full flex items-center justify-center bg-muted">
-                    <AlertTriangle size={32} className="text-muted-foreground opacity-50" />
-                  </div>
-                ) : (
-                  <img
-                    src={profilePhoto}
-                    alt="Mahmoud Fathy Orabi"
-                    className="w-full h-full object-contain bg-background/50"
-                    onError={() => {
-                      console.error('[Profile Photo] Error loading:', profilePhoto);
-                      setImageError(true);
-                    }}
-                  />
-                )}
+                <img
+                  src={profilePhoto}
+                  alt="Mahmoud Fathy Orabi"
+                  className="w-full h-full object-contain bg-background/50"
+                  onError={(e) => {
+                    console.error('[Profile Photo] Error loading:', profilePhoto);
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-muted"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert text-muted-foreground opacity-50"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg></div>';
+                    }
+                  }}
+                  onLoad={() => {
+                    console.log('[Profile Photo] Loaded successfully:', profilePhoto);
+                  }}
+                />
               </div>
             </div>
           </motion.div>

@@ -15,6 +15,7 @@ const photos = [
   { src: withBase("images/gallery-falcon-event.jpg"), caption: "Falcon Championship" },
   { src: withBase("images/gallery-headset-selfie.jpg"), caption: "On Location" },
   { src: withBase("images/gallery-evs-remote.jpg"), caption: "EVS LSM Remote" },
+  { src: withBase("images/gallery-control-room.jpeg"), caption: "Broadcast Control Room HD" },
   { src: withBase("images/certificate-mansour.jpg"), caption: "شهادة شكر وتقدير - الشيخ منصور بن زايد" },
   { src: withBase("images/badge-zayed-festival.jpg"), caption: "Sheikh Zayed Festival 2025 Badge" },
 ];
@@ -163,7 +164,7 @@ const FilmStripSlider = () => {
 
     let animationId: number;
     let scrollPos = 0;
-    const speed = 0.75; // 50% faster
+    const speed = 1.5; // Faster speed
     let isPaused = false;
 
     const animate = () => {
