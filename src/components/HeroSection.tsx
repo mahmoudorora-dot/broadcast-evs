@@ -181,7 +181,7 @@ const HeroSection = () => {
               variants={textVariants}
               initial="hidden"
               animate="visible"
-              className="max-w-xl text-muted-foreground leading-relaxed mb-8 text-sm md:text-base"
+              className="max-w-xl text-primary leading-relaxed mb-8 text-sm md:text-base"
             >
               Broadcast technician with more than 8 years of experience in live sports production,
               EVS replay systems, media playback, and outside broadcast operations.

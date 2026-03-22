@@ -4,7 +4,6 @@ import SkillsTicker from "@/components/SkillsTicker";
 import AboutSection from "@/components/AboutSection";
 import ShowreelSection from "@/components/ShowreelSection";
 import FilmStripSlider from "@/components/FilmStripSlider";
-import GallerySection from "@/components/GallerySection";
 import EventsSection from "@/components/EventsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -21,7 +20,6 @@ const Index = () => {
       <AboutSection />
       <ShowreelSection />
       <FilmStripSlider />
-      <GallerySection />
       <EventsSection />
       <ExperienceSection />
       <SkillsSection />

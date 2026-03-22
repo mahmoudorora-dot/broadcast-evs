@@ -15,6 +15,8 @@ const photos = [
   { src: withBase("images/gallery-falcon-event.jpg"), caption: "Falcon Championship" },
   { src: withBase("images/gallery-headset-selfie.jpg"), caption: "On Location" },
   { src: withBase("images/gallery-evs-remote.jpg"), caption: "EVS LSM Remote" },
+  { src: withBase("images/certificate-mansour.jpg"), caption: "شهادة شكر وتقدير - الشيخ منصور بن زايد" },
+  { src: withBase("images/badge-zayed-festival.jpg"), caption: "Sheikh Zayed Festival 2025 Badge" },
 ];
 
 const Sprocket = () => (
