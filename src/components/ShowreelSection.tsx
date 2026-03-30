@@ -8,6 +8,7 @@ const videos = [
   { src: withBase("videos/showreel-4.mp4"), caption: "Broadcast Operations" },
   { src: withBase("videos/showreel-5.mp4"), caption: "Live Event Coverage" },
   { src: withBase("videos/showreel-6.mp4"), caption: "Behind the Scenes" },
+  { src: withBase("videos/attached-video-1.mp4"), caption: "Personal Production Moment" },
 ];
 
 const Sprocket = () => (
@@ -70,7 +71,6 @@ const FilmFrame = ({
               <video
                 ref={videoRef}
                 src={video.src}
-                muted
                 loop
                 playsInline
                 preload="metadata"
