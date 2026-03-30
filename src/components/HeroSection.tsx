@@ -5,7 +5,7 @@ import { withBase, getAssetUrl } from "@/lib/media";
 
 const heroVideoSrc = withBase("videos/showreel-6.mp4");
 const profilePhoto = "/profile-photo.jpeg";
-const heroBackgroundImage = "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80";
+const heroBackgroundImage = "/images/local-hero-background.jpg";
 
 const textVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -45,10 +45,10 @@ const HeroSection = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            filter: 'brightness(0.6) contrast(1.2) saturate(1.1)',
+            filter: 'brightness(0.7) contrast(1.1) saturate(1.2)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />
         </div>
       </motion.div>
 
