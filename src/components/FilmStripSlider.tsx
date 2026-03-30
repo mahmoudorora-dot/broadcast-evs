@@ -48,6 +48,7 @@ const CinematicFrame = ({
   currentIndex,
   totalSlides,
   dragX,
+  isMobile,
   onClick,
 }: {
   photo: { src: string; caption: string; subtitle: string };
@@ -59,6 +60,7 @@ const CinematicFrame = ({
   currentIndex: number;
   totalSlides: number;
   dragX: any;
+  isMobile: boolean;
   onClick: () => void;
 }) => {
   const [hasError, setHasError] = useState(false);
@@ -94,12 +96,14 @@ const CinematicFrame = ({
     <motion.div
       className="absolute cursor-pointer"
       style={{
-        width: "380px",
-        height: "320px",
+        width: isMobile ? "360px" : "560px",
+        height: isMobile ? "270px" : "450px",
         left: "50%",
         top: "50%",
         transformOrigin: "center",
         perspective: "1000px",
+        margin: isActive ? "auto" : "none",
+        transform: isActive ? "translate(-50%, -50%) translateZ(0)" : `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
       }}
       animate={{
         x: translateX,
@@ -108,34 +112,32 @@ const CinematicFrame = ({
         scale,
         opacity,
         rotateY,
-        filter: isActive ? "none" : `blur(${Math.abs(position) * 1.5}px) brightness(${0.7 + Math.abs(position) * 0.1})`,
+        filter: isActive ? "none" : `blur(${Math.abs(position) * 1.2}px) brightness(${0.75 + Math.abs(position) * 0.1})`,
         zIndex: isActive ? 30 : 20 - Math.abs(position),
       }}
       transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 1,
+        duration: 0.25,
+        ease: [0.23, 0.1, 0.25, 1],
       }}
       whileHover={isActive ? { 
-        scale: 1.05,
-        y: -5,
-        transition: { type: "spring", stiffness: 400, damping: 25 }
+        scale: 1.08,
+        y: -8,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
       } : {}}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Glassmorphism container */}
+      {/* Glassmorphism container with upscale effect */}
       <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm">
         {/* Dynamic background blur effect */}
         <div 
           className="absolute inset-0 bg-cover bg-center scale-110"
           style={{ 
             backgroundImage: `url(${photo.src})`,
-            filter: "blur(20px) brightness(0.4)",
-            transform: `scale(${1.1 + (isHovered ? 0.1 : 0)})`,
-            transition: "transform 0.6s ease-out",
+            filter: "blur(6px) brightness(0.75)",
+            transform: `scale(${1.08})`,
+            transition: "transform 0.8s ease-out",
           }}
         />
         
@@ -143,15 +145,19 @@ const CinematicFrame = ({
         <motion.div 
           className="absolute inset-2 rounded-xl overflow-hidden"
           animate={{
-            scale: isActive && isHovered ? 1.1 : 1,
-            y: dragX.get() * -0.05, // Parallax effect
+            scale: isActive && isHovered ? 1.12 : 1,
+            y: dragX.get() * -0.03, // Smoother parallax effect
           }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: "spring", stiffness: 200, damping: 15 }}
         >
           <img
             src={photo.src}
             alt={photo.caption}
             className="w-full h-full object-cover"
+            style={{ 
+              objectFit: "cover",
+              objectPosition: "center"
+            }}
             loading="lazy"
             onError={() => {
               console.error("Cinematic image failed to load:", photo.src);
@@ -320,6 +326,7 @@ const FilmStripSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
@@ -329,22 +336,32 @@ const FilmStripSlider = () => {
   const controls = useAnimation();
   const totalSlides = photos.length;
 
+  // Mobile detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const handleClose = useCallback(() => setSelectedPhoto(null), []);
 
-  // Physics-based autoplay with smart pause
+  // Autoplay with 1000ms delay - pause on desktop hover only
   useEffect(() => {
-    if (!isPaused && !isDragging) {
-      autoplayRef.current = setInterval(() => {
+    autoplayRef.current = setInterval(() => {
+      if (!isPaused || isMobile) {
         setCurrentIndex((prev) => (prev + 1) % totalSlides);
-      }, 4000);
-    }
+      }
+    }, 1000);
 
     return () => {
       if (autoplayRef.current) {
         clearInterval(autoplayRef.current);
       }
     };
-  }, [isPaused, isDragging, totalSlides]);
+  }, [isPaused, isMobile, totalSlides]);
 
   // Drag handlers with physics
   const handleDragStart = () => {
@@ -403,8 +420,8 @@ const FilmStripSlider = () => {
     <>
       <section 
         className="py-24 relative overflow-hidden"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseEnter={() => !isMobile && setIsPaused(true)}
+        onMouseLeave={() => !isMobile && setIsPaused(false)}
       >
         {/* Dynamic background with blur */}
         <div 
@@ -438,8 +455,8 @@ const FilmStripSlider = () => {
           </motion.div>
         </div>
 
-        {/* 3D Carousel Container */}
-        <div className="relative h-[600px] flex items-center justify-center">
+        {/* 3D Carousel Container - Responsive Heights */}
+        <div className={`relative flex items-center justify-center overflow-hidden ${isMobile ? 'h-[60vh] md:h-[75vh]' : 'h-[900px]'}`}>
           {/* Navigation arrows with enhanced styling */}
           <button
             onClick={goToPrevious}
@@ -457,11 +474,17 @@ const FilmStripSlider = () => {
             <ChevronRight size={28} />
           </button>
 
-          {/* 3D Carousel Stage */}
+          {/* 3D Carousel Stage - Perfect Centering */}
           <div 
             ref={containerRef}
             className="relative w-full max-w-7xl h-full flex items-center justify-center"
-            style={{ perspective: "2000px", transformStyle: "preserve-3d" }}
+            style={{ 
+              perspective: "2000px", 
+              transformStyle: "preserve-3d",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
           >
             {/* Render all slides in 3D space */}
             {photos.map((photo, index) => {
@@ -482,6 +505,7 @@ const FilmStripSlider = () => {
                   currentIndex={currentIndex}
                   totalSlides={totalSlides}
                   dragX={dragX}
+                  isMobile={isMobile}
                   onClick={() => {
                     if (!isActive) {
                       setCurrentIndex(index);
