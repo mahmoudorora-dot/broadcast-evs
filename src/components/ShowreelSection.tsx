@@ -224,7 +224,7 @@ const ShowreelSection = () => {
 
   return (
     <>
-      <section className="py-20 relative overflow-hidden">
+      <section id="showreel" className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background pointer-events-none" />
 
         <div className="container mx-auto px-6 mb-10 relative">

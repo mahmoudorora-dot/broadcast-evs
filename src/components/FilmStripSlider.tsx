@@ -85,10 +85,10 @@ const CinematicFrame = ({
   const isLeftSide = position < 0;
   const isRightSide = position > 0;
 
-  // 3D transform calculations
+  // 3D transform calculations - Perfect centering
   const rotateY = position * -15; // Perspective rotation
-  const translateZ = isActive ? 100 : Math.abs(position) * -50;
-  const translateX = position * 120;
+  const translateZ = isActive ? 0 : Math.abs(position) * -50;
+  const translateX = isActive ? 0 : position * 120;
   const scale = isActive ? 1 : Math.max(0.7, 1 - Math.abs(position) * 0.15);
   const opacity = isActive ? 1 : Math.max(0.4, 1 - Math.abs(position) * 0.2);
 
@@ -103,9 +103,11 @@ const CinematicFrame = ({
         transformOrigin: "center",
         perspective: "1000px",
         margin: isActive ? "auto" : "none",
-        transform: isActive ? "translate(-50%, -50%) translateZ(0)" : `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+        transform: isActive ? 
+          "translate(-50%, -50%) translateZ(0)" : 
+          `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
       }}
-      animate={{
+      animate={isActive ? {} : {
         x: translateX,
         y: 0,
         z: translateZ,
@@ -348,13 +350,13 @@ const FilmStripSlider = () => {
 
   const handleClose = useCallback(() => setSelectedPhoto(null), []);
 
-  // Autoplay with 1000ms delay - pause on desktop hover only
+  // Autoplay with 2000ms delay - pause on desktop hover only
   useEffect(() => {
     autoplayRef.current = setInterval(() => {
       if (!isPaused || isMobile) {
         setCurrentIndex((prev) => (prev + 1) % totalSlides);
       }
-    }, 1000);
+    }, 2000);
 
     return () => {
       if (autoplayRef.current) {
@@ -483,7 +485,8 @@ const FilmStripSlider = () => {
               transformStyle: "preserve-3d",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
+              position: "relative"
             }}
           >
             {/* Render all slides in 3D space */}
