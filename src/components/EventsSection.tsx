@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Trophy, MapPin, CalendarDays } from "lucide-react";
 
 const events = [
+  { title: "Sheikh Mansour bin Zayed Agricultural Excellence Award", location: "UAE", year: "2026" },
   { title: "Dubai Horse World Cup", location: "Dubai", year: "2024 – 2025 – 2026" },
   { title: "Sona'a Al Amal – Live Broadcast", location: "Dubai", year: "2024 – 2025" },
   { title: "TikTok Award", location: "UAE", year: "2025" },
