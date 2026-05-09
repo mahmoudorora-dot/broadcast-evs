@@ -15,6 +15,11 @@ const workPhotos = [
   { src: withBase("images/gallery-falcon-event.jpg"), caption: "Falcon Championship – Live Event" },
   { src: withBase("images/gallery-headset-selfie.jpg"), caption: "On Location – Field Work" },
   { src: withBase("images/gallery-evs-remote.jpg"), caption: "EVS LSM Remote Controller" },
+  { src: withBase("images/attached-photo-1.jpg"), caption: "Professional Broadcasting Setup – Control Room" },
+  { src: withBase("images/attached-photo-2.jpg"), caption: "Live Event Production – Technical Operations" },
+  { src: withBase("images/attached-photo-3.jpg"), caption: "Broadcast Equipment – Advanced Systems" },
+  { src: withBase("images/attached-photo-4.jpg"), caption: "Studio Operations – Professional Environment" },
+  { src: withBase("images/attached-photo-5.jpg"), caption: "Media Production – High-Tech Setup" },
 ];
 
 const achievements = [

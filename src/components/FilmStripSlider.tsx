@@ -15,7 +15,6 @@ const photos = [
   { src: withBase("images/gallery-falcon-event.jpg"), caption: "Falcon Championship", subtitle: "Prestigious sports event coverage" },
   { src: withBase("images/gallery-headset-selfie.jpg"), caption: "On Location", subtitle: "Field production expertise" },
   { src: withBase("images/gallery-evs-remote.jpg"), caption: "EVS LSM Remote", subtitle: "Remote production capabilities" },
-  { src: withBase("images/attached-photo-1.jpg"), caption: "Production Moment 1", subtitle: "Behind the scenes excellence" },
   { src: withBase("images/attached-photo-2.jpg"), caption: "Production Moment 2", subtitle: "Technical precision in action" },
   { src: withBase("images/attached-photo-3.jpg"), caption: "Production Moment 3", subtitle: "Live event mastery" },
   { src: withBase("images/attached-photo-4.jpg"), caption: "Production Moment 4", subtitle: "Broadcast innovation showcase" },
@@ -476,47 +475,80 @@ const FilmStripSlider = () => {
             <ChevronRight size={28} />
           </button>
 
-          {/* 3D Carousel Stage - Perfect Centering */}
+          {/* Spider Grid Gallery - Smart Layout */}
           <div 
             ref={containerRef}
-            className="relative w-full max-w-7xl h-full flex items-center justify-center"
+            className="relative w-full max-w-7xl flex items-center justify-center overflow-y-auto"
             style={{ 
               perspective: "2000px", 
               transformStyle: "preserve-3d",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "relative"
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1rem",
+              padding: "1rem",
+              position: "relative",
+              minHeight: "100%",
+              maxHeight: "100vh"
             }}
           >
-            {/* Render all slides in 3D space */}
+            {/* Render all photos in spider grid */}
             {photos.map((photo, index) => {
-              const position = index - currentIndex;
               const isActive = index === currentIndex;
-              const isPrev = position === -1 || (currentIndex === 0 && index === totalSlides - 1);
-              const isNext = position === 1 || (currentIndex === totalSlides - 1 && index === 0);
 
               return (
-                <CinematicFrame
+                <motion.div
                   key={`${photo.caption}-${index}`}
-                  photo={photo}
-                  onOpen={() => setSelectedPhoto(photo)}
-                  isActive={isActive}
-                  isPrev={isPrev}
-                  isNext={isNext}
-                  index={index}
-                  currentIndex={currentIndex}
-                  totalSlides={totalSlides}
-                  dragX={dragX}
-                  isMobile={isMobile}
-                  onClick={() => {
-                    if (!isActive) {
-                      setCurrentIndex(index);
-                    } else {
-                      setSelectedPhoto(photo);
-                    }
+                  className="relative cursor-pointer rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm"
+                  style={{
+                    width: "100%",
+                    height: "280px",
+                    transform: isActive ? "scale(1.05)" : "scale(1)",
+                    zIndex: isActive ? 30 : 10,
+                    transition: "all 0.3s ease"
                   }}
-                />
+                  whileHover={{ 
+                    scale: 1.08,
+                    y: -8,
+                    transition: { type: "spring", stiffness: 300, damping: 20 }
+                  }}
+                  onClick={() => setSelectedPhoto(photo)}
+                  animate={{
+                    scale: isActive ? 1.05 : 1,
+                    boxShadow: isActive ? "0 20px 40px rgba(59, 130, 246, 0.3)" : "0 10px 20px rgba(0, 0, 0, 0.2)"
+                  }}
+                  transition={{
+                    duration: 0.25,
+                    ease: [0.23, 0.1, 0.25, 1],
+                  }}
+                >
+                  {/* Main image - Clean and clear */}
+                  <img
+                    src={photo.src}
+                    alt={photo.caption}
+                    className="w-full h-full object-cover"
+                    style={{ 
+                      objectFit: "cover",
+                      objectPosition: "center",
+                      filter: "contrast(1.15) saturate(1.1) brightness(1.05)"
+                    }}
+                    loading="lazy"
+                    onError={() => {
+                      console.error("Gallery image failed to load:", photo.src);
+                    }}
+                  />
+                  
+                  {/* Hover text overlay */}
+                  <motion.div 
+                    className="absolute bottom-0 left-0 right-0 p-4 text-white"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileHover={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="text-sm font-display font-semibold tracking-wide text-center">
+                      {photo.caption}
+                    </p>
+                  </motion.div>
+                </motion.div>
               );
             })}
           </div>
