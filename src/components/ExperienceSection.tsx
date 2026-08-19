@@ -3,31 +3,31 @@ import { Briefcase, MapPin, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    company: "MAP Production – Dubai",
-    role: "EVS Operator",
-    period: "2022 – Present",
+    company: "MAP (Media Production)",
+    role: "Broadcast Technician & Replay Operator",
+    period: "March 2023 – Present",
     location: "Dubai, UAE",
     description:
-      "EVS replay operation, media playback systems, teleprompter control, and live broadcast coordination with production teams.",
-    highlights: ["EVS XT/VIA", "Live Sports", "Teleprompter"],
+      "Operated EVS (XT2/XT3) and InFlow replay systems during live international sports and high-profile entertainment events broadcasted on Abu Dhabi Sports, Dubai TV, and Saudi Sports. Executed real-time slow-motion replays, live clip creation, and turnaround highlight packages under tight live broadcast deadlines.",
+    highlights: ["EVS XT2/XT3", "InFlow Replay", "Live Sports"],
   },
   {
-    company: "Media House Production – Cairo",
-    role: "EVS Operator",
-    period: "2017 – 2019",
-    location: "Cairo, Egypt",
+    company: "Independent Live Production Project",
+    role: "Live Production & Systems Technician",
+    period: "2024 – 2025",
+    location: "Dubai, UAE",
     description:
-      "Operated EVS systems for sports broadcasts and television programs, managing highlights and replay sequences during live transmissions.",
-    highlights: ["Sports Replay", "TV Production", "Live Editing"],
+      "Integrated and deployed a 4-camera live production control room setup from bare infrastructure to operational status. Managed complete hardware integration including Cameras, CCUs, Switchers, Multiviewers, and Multi-channel SSD Recorders.",
+    highlights: ["Control Room Setup", "Hardware Integration", "Multi-Channel Recording"],
   },
   {
-    company: "OB Vision Egypt – Cairo",
-    role: "OB Technician",
-    period: "2015 – 2017",
-    location: "Cairo, Egypt",
+    company: "Derna Live Production Setup",
+    role: "EVS Operator & Studio Installation Technician",
+    period: "June 2026",
+    location: "Derna, Libya",
     description:
-      "Responsible for OB camera setup, signal routing, cabling systems, and technical testing before live broadcasts.",
-    highlights: ["OB Camera", "Signal Routing", "Cabling"],
+      "Collaborated with lead broadcast engineers in setting up control room infrastructure, cabling, and monitoring systems for field operations. Served as the primary EVS operator for live coverage feeds across regional networks.",
+    highlights: ["Field Operations", "Studio Installation", "Live Coverage"],
   },
 ];
 

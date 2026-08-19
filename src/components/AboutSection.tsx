@@ -53,15 +53,13 @@ const AboutSection = () => {
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3">
               <p className="text-secondary-foreground leading-relaxed mb-6">
-                Mahmoud Fathy Orabi is an experienced EVS Operator and Broadcast Technician with more than
-                8 years of experience in live production and international sports broadcasting. He specializes
-                in EVS replay systems, media playback tools, teleprompter operation, and outside broadcast
-                camera setups.
+                Hands-on Broadcast Operations Specialist, EVS Replay Operator, and Live Production Technician with dedicated experience in high-profile broadcast environments since March 2023. Proven track record in executing real-time slow-motion replays, live clip creation, and turnaround highlight packages using EVS (XT2/XT3) and InFlow servers for tier-1 regional networks, including Abu Dhabi Media, Dubai TV, and Saudi Sports.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Technical expertise bridges traditional SDI/Fiber baseband infrastructure with modern AV-over-IP workflows. Experienced in full studio integration—managing signal paths from camera sensors and CCUs to matrix switchers, multiviewers, and multi-channel SSD recorders. Highly proficient in configuring multi-destination IP streaming platforms (Wirecast Pro, vMix, OBS) using RTMP/RTMPS, SRT, and NDI protocols with live audio filtering and real-time graphics insertion.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Mahmoud has worked on multiple international championships and large-scale live productions
-                and is known for reliability, technical precision, and strong teamwork in high pressure
-                broadcast environments.
+                NDI Basics Certified with an active focus on AV-over-IP network architecture, focusing on rapid Layer-1 physical diagnostics and network troubleshooting under zero-downtime live production constraints.
               </p>
 
               {/* Live Streaming Skills Section */}

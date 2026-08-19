@@ -134,7 +134,7 @@ const HeroSection = () => {
             >
               <MapPin size={14} className="text-primary" />
               <span className="text-xs font-medium tracking-wide text-primary">
-                Dubai Production City, UAE
+                Dubai, United Arab Emirates
               </span>
             </motion.div>
 
@@ -145,9 +145,9 @@ const HeroSection = () => {
               animate="visible"
               className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-3"
             >
-              <span className="text-foreground">Mahmoud Fathy</span>
+              <span className="text-foreground">MAHMOUD FATHY</span>
               <br />
-              <span className="text-gradient">Orabi</span>
+              <span className="text-gradient">ABD RAHMAN ORABI</span>
             </motion.h1>
 
             <motion.p
@@ -157,7 +157,7 @@ const HeroSection = () => {
               animate="visible"
               className="text-sm md:text-base font-display font-medium tracking-wider text-silver uppercase mb-2"
             >
-              Broadcast & EVS Operator
+              Broadcast Operations & Live Production Technician
             </motion.p>
             <motion.p
               custom={2.5}
@@ -166,7 +166,7 @@ const HeroSection = () => {
               animate="visible"
               className="text-xs md:text-sm font-display tracking-wide text-muted-foreground uppercase mb-6"
             >
-              Media Production Specialist
+              EVS Operator | Replay Specialist | Live Streaming & AV-over-IP Technician
             </motion.p>
 
             <motion.p
@@ -176,8 +176,7 @@ const HeroSection = () => {
               animate="visible"
               className="max-w-xl text-primary leading-relaxed mb-8 text-sm md:text-base"
             >
-              Broadcast technician with more than 8 years of experience in live sports production,
-              EVS replay systems, media playback, and outside broadcast operations.
+              Hands-on Broadcast Operations Specialist and Replay Operator with dedicated live production experience since March 2023, backed by over a decade of IT, telecommunications, and hardware troubleshooting background.
             </motion.p>
 
             <motion.div

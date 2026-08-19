@@ -25,9 +25,23 @@ const EducationSection = () => {
                 <h3 className="font-display font-bold text-lg text-foreground">Education</h3>
               </div>
               <p className="font-display font-semibold text-foreground mb-1">
-                Bachelor's Degree in Accounting & Business Administration
+                Bachelor's Degree in Commerce & Business Administration
               </p>
-              <p className="text-sm text-muted-foreground">Banha University – Egypt • 2010</p>
+              <p className="text-sm text-muted-foreground mb-4">Benha University – Egypt • 2010</p>
+              
+              <div className="border-t border-border pt-4 mt-4">
+                <p className="font-display font-semibold text-foreground mb-2">Certifications</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <p className="text-sm text-muted-foreground">NDI Basics Certification – NDI / Vizrt (2026)</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <p className="text-sm text-muted-foreground">Ongoing: AV-over-IP Architecture & NDI Workflows</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Languages */}

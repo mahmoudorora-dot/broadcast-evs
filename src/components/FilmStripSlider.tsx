@@ -15,11 +15,6 @@ const photos = [
   { src: withBase("images/gallery-falcon-event.jpg"), caption: "Falcon Championship", subtitle: "Prestigious sports event coverage" },
   { src: withBase("images/gallery-headset-selfie.jpg"), caption: "On Location", subtitle: "Field production expertise" },
   { src: withBase("images/gallery-evs-remote.jpg"), caption: "EVS LSM Remote", subtitle: "Remote production capabilities" },
-  { src: withBase("images/attached-photo-2.jpg"), caption: "Production Moment 2", subtitle: "Technical precision in action" },
-  { src: withBase("images/attached-photo-3.jpg"), caption: "Production Moment 3", subtitle: "Live event mastery" },
-  { src: withBase("images/attached-photo-4.jpg"), caption: "Production Moment 4", subtitle: "Broadcast innovation showcase" },
-  { src: withBase("images/attached-photo-5.jpg"), caption: "Production Moment 5", subtitle: "Professional crew coordination" },
-  { src: withBase("images/attached-photo-6.jpg"), caption: "Production Moment 6", subtitle: "State-of-the-art technology" },
   { src: withBase("images/certificate-mansour.jpg"), caption: "Professional Achievement", subtitle: "Excellence in broadcast services" },
   { src: withBase("images/badge-zayed-festival.jpg"), caption: "Festival Recognition", subtitle: "Award-winning production quality" },
 ];

@@ -3,45 +3,41 @@ import { useRef } from "react";
 import { Cpu, Monitor, Radio, Camera, Cable, Tv, Video, Airplay, AudioLines, Presentation, Globe, PlayCircle, Settings, Wifi, Cloud, Smartphone, Laptop, Tablet } from "lucide-react";
 
 const skills = [
-  // EVS & Replay Systems
-  { label: "EVS XT / VIA Replay", icon: Monitor, level: 95 },
-  { label: "EVS LSM Remote", icon: Wifi, level: 90 },
-  { label: "EVS C-Cast", icon: Cloud, level: 85 },
+  // Replay & Playout Systems
+  { label: "EVS XT2 / XT3", icon: Monitor, level: 95 },
+  { label: "InFlow Replay", icon: Video, level: 90 },
+  { label: "Slow-Motion Control", icon: PlayCircle, level: 92 },
+  { label: "Highlight Edits", icon: Cpu, level: 88 },
+  { label: "Ingest & Playout", icon: Radio, level: 90 },
   
-  // Streaming Software
-  { label: "vMix", icon: Tv, level: 90 },
-  { label: "Wirecast", icon: Video, level: 85 },
-  { label: "OBS Studio", icon: PlayCircle, level: 92 },
-  { label: "Streamlabs OBS", icon: PlayCircle, level: 88 },
-  { label: "XSplit Broadcaster", icon: Monitor, level: 80 },
-  { label: "Resolume Arena", icon: Airplay, level: 85 },
-  { label: "Livestream Studio", icon: Settings, level: 82 },
+  // Live Studio Operations
+  { label: "Blackmagic ATEM", icon: Tv, level: 88 },
+  { label: "Sony Exposure", icon: Monitor, level: 85 },
+  { label: "Teleprompter", icon: Presentation, level: 92 },
+  { label: "Character Generator", icon: Laptop, level: 80 },
+  { label: "Multiviewers", icon: Airplay, level: 87 },
   
-  // Streaming Platforms
-  { label: "YouTube Live", icon: PlayCircle, level: 95 },
-  { label: "Twitch Streaming", icon: PlayCircle, level: 90 },
-  { label: "Facebook Live", icon: Globe, level: 92 },
-  { label: "Instagram Live", icon: Smartphone, level: 88 },
-  { label: "TikTok Live", icon: Smartphone, level: 85 },
-  { label: "LinkedIn Live", icon: Globe, level: 80 },
-  { label: "Vimeo Live", icon: Video, level: 87 },
-  { label: "Restream.io", icon: Cloud, level: 83 },
-  { label: "StreamYard", icon: Laptop, level: 86 },
-  { label: "StreamElements", icon: Settings, level: 84 },
+  // IP Video & Streaming
+  { label: "RTMP / RTMPS", icon: Globe, level: 93 },
+  { label: "SRT Protocol", icon: Wifi, level: 90 },
+  { label: "NDI Protocols", icon: Cloud, level: 88 },
+  { label: "Wirecast Pro", icon: Video, level: 90 },
+  { label: "vMix", icon: Tv, level: 92 },
+  { label: "OBS Studio", icon: PlayCircle, level: 95 },
+  { label: "Restream.io", icon: Cloud, level: 85 },
   
-  // Hardware & Equipment
-  { label: "Teleprompter Systems", icon: Presentation, level: 92 },
-  { label: "OB Camera Setup", icon: Camera, level: 88 },
-  { label: "Signal Routing", icon: Cable, level: 90 },
-  { label: "Live Broadcast", icon: Radio, level: 95 },
-  { label: "Audio/Video Signals", icon: AudioLines, level: 88 },
-  { label: "Multi-Platform Streaming", icon: Globe, level: 93 },
+  // Broadcast Engineering & Hardware
+  { label: "Signal Routing", icon: Cable, level: 92 },
+  { label: "Patch Panels", icon: Settings, level: 88 },
+  { label: "Camera CCU Setup", icon: Camera, level: 90 },
+  { label: "SDI / Fiber Converters", icon: Cable, level: 87 },
+  { label: "Multi-Channel Recorders", icon: Cpu, level: 85 },
   
-  // Production Tools
-  { label: "Broadcast PPT", icon: Cpu, level: 80 },
-  { label: "Mobile Streaming", icon: Smartphone, level: 87 },
-  { label: "Tablet Production", icon: Tablet, level: 82 },
-  { label: "WebRTC Streaming", icon: Wifi, level: 78 },
+  // IT & Networking
+  { label: "Layer-1 Troubleshooting", icon: Wifi, level: 90 },
+  { label: "PoE Verification", icon: Laptop, level: 88 },
+  { label: "LAN / WLAN Config", icon: Globe, level: 92 },
+  { label: "Hardware Diagnostics", icon: Cpu, level: 90 },
 ];
 
 const CircularMeter = ({ level, icon: Icon, label, delay }: { level: number; icon: React.ElementType; label: string; delay: number }) => {
