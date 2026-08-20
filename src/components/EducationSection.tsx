@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Globe } from "lucide-react";
+import { GraduationCap, Globe, Award } from "lucide-react";
+import { withBase } from "@/lib/media";
 
 const EducationSection = () => {
   return (
@@ -72,6 +73,7 @@ const EducationSection = () => {
               </div>
             </div>
           </div>
+
         </motion.div>
       </div>
     </section>

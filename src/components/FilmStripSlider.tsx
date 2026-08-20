@@ -15,7 +15,7 @@ const photos = [
   { src: withBase("images/gallery-falcon-event.jpg"), caption: "Falcon Championship", subtitle: "Prestigious sports event coverage" },
   { src: withBase("images/gallery-headset-selfie.jpg"), caption: "On Location", subtitle: "Field production expertise" },
   { src: withBase("images/gallery-evs-remote.jpg"), caption: "EVS LSM Remote", subtitle: "Remote production capabilities" },
-  { src: withBase("images/certificate-mansour.jpg"), caption: "Professional Achievement", subtitle: "Excellence in broadcast services" },
+  { src: withBase("images/certificate-mansour.jpg"), caption: "NDI Certification", subtitle: "NDI Basics Certification – NDI / Vizrt (2026)" },
   { src: withBase("images/badge-zayed-festival.jpg"), caption: "Festival Recognition", subtitle: "Award-winning production quality" },
 ];
 
