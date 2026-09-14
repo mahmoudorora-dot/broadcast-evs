@@ -176,7 +176,7 @@ const HeroSection = () => {
               animate="visible"
               className="max-w-xl text-primary leading-relaxed mb-8 text-sm md:text-base"
             >
-              Hands-on Broadcast Operations Specialist and Replay Operator with dedicated live production experience since March 2023, backed by over a decade of IT, telecommunications, and hardware troubleshooting background.
+              Hands-on Broadcast Operations Specialist and Replay Operator with dedicated live production experience since March 2022, backed by over a decade of IT, telecommunications, and hardware troubleshooting background.
             </motion.p>
 
             <motion.div

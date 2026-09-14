@@ -74,6 +74,30 @@ const EducationSection = () => {
             </div>
           </div>
 
+          {/* Certificate Image */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-8"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <Award size={24} className="text-primary" />
+              <h3 className="font-display font-bold text-lg text-foreground">Professional Certification</h3>
+            </div>
+            <div className="p-4 rounded-lg bg-card border border-border glow-border max-w-2xl mx-auto">
+              <img
+                src={withBase("images/ndi-certificate-correct.png")}
+                alt="NDI Basics Certification"
+                className="w-full rounded-lg shadow-lg"
+              />
+              <p className="text-sm text-muted-foreground mt-3 text-center">
+                NDI Basics Certification – NDI / Vizrt (2026)
+              </p>
+            </div>
+          </motion.div>
+
         </motion.div>
       </div>
     </section>

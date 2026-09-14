@@ -53,7 +53,7 @@ const AboutSection = () => {
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3">
               <p className="text-secondary-foreground leading-relaxed mb-6">
-                Hands-on Broadcast Operations Specialist, EVS Replay Operator, and Live Production Technician with dedicated experience in high-profile broadcast environments since March 2022. Proven track record in executing real-time slow-motion replays, live clip creation, and turnaround highlight packages using EVS (XT2/XT3) and InFlow servers for tier-1 regional networks, including Abu Dhabi Media, Dubai TV, and Saudi Sports.
+                Hands-on Broadcast Operations Specialist and Replay Operator with dedicated live production experience since March 2022, backed by over a decade of IT, telecommunications, and hardware troubleshooting background.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 Technical expertise bridges traditional SDI/Fiber baseband infrastructure with modern AV-over-IP workflows. Experienced in full studio integration—managing signal paths from camera sensors and CCUs to matrix switchers, multiviewers, and multi-channel SSD recorders. Highly proficient in configuring multi-destination IP streaming platforms (Wirecast Pro, vMix, OBS Studio) using RTMP/RTMPS, SRT, and NDI protocols with live audio filtering and real-time graphics insertion.
